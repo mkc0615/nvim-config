@@ -1,5 +1,5 @@
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("habamax")
+vim.cmd.colorscheme("rose-pine")
 
 local function set_transparent() -- set UI component to transparent
 	local groups = {
