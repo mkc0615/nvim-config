@@ -1,25 +1,21 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master", -- the rewritten "main" branch requires Neovim 0.11+
     event = {"BufReadPre", "BufNewFile"},
-    build = {":TSUpdate"},
+    build = ":TSUpdate",
     dependencies = {
         "windwp/nvim-ts-autotag"
     },
     config = function()
         -- import nvim-treesitter plugin
         local treesitter = require("nvim-treesitter.configs")
-        
+
         treesitter.setup({
             highlight = {
                 enable = true,
             },
             -- enable indentation
             indent = { enable = true },
-
-            -- enable autotagging (w/ nvim-ts-autotag plugin)
-            autotag = {
-                enable = true,
-            },
 
             -- ensure these language parsers are installed
             ensure_installed = {
@@ -55,5 +51,8 @@ return {
                 },
             },
         })
+
+        -- enable autotagging (w/ nvim-ts-autotag plugin)
+        require("nvim-ts-autotag").setup()
     end,
 }
